@@ -1,37 +1,51 @@
 import cv2
 import os
+import pygame
 
-def play_video(video_path):
-    # Open the video file
+def play_video_with_audio(video_path):
+    # Initialize pygame mixer for audio
+    pygame.init()
+    pygame.mixer.init()
+
+    # Load the video file
     cap = cv2.VideoCapture(video_path)
-    
     if not cap.isOpened():
         print("Error: Could not open video file.")
         return
 
-    # Set fullscreen mode
-    cv2.namedWindow('Startup Video', cv2.WND_PROP_FULLSCREEN)
-    cv2.setWindowProperty('Startup Video', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+    # Extract the audio track and play it
+    try:
+        pygame.mixer.music.load(video_path)
+        pygame.mixer.music.play()
+    except pygame.error as e:
+        print(f"Error: Could not play audio. {e}")
+        return
+
+    # Create a window with the video resolution
+    cv2.namedWindow('Startup Video', cv2.WINDOW_NORMAL)
 
     while cap.isOpened():
-        # Read the next frame from the video
         ret, frame = cap.read()
-        if not ret:
+        if not ret:  # If the video ends
             break
-        # Display the frame
+
+        # Display the video frame
         cv2.imshow('Startup Video', frame)
-        # Exit if the 'q' key is pressed
+
+        # Exit on pressing 'q'
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
 
-    # Release resources
+    # Stop audio playback and release resources
+    pygame.mixer.music.stop()
     cap.release()
     cv2.destroyAllWindows()
+    pygame.quit()
 
 if __name__ == "__main__":
     # Path to the video file
     video_file = r"C:\Users\hp\Desktop\Video_startup\focus.mp4"
     if os.path.exists(video_file):
-        play_video(video_file)
+        play_video_with_audio(video_file)
     else:
         print(f"Error: File '{video_file}' not found.")

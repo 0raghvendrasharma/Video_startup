@@ -1,4 +1,4 @@
-# 🎯 Focused Startup Video - Stay Motivated and Productive 💪
+# 🎯 Focused Startup Video - Stay Motivated and Productive 
 
 ## 🚀 Motivation
 

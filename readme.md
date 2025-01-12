@@ -30,35 +30,65 @@ This project was born from my own struggle with distractions. I often found myse
 ## ⚡ Quick Setup
 
 1. **Clone the Repo**:  
-    Clone the project to your local machine.  
+    Clone the project to your local machine:
     ```bash
     git clone <repository_url>
     ```
 
-2. **Install Dependencies**:  
+2. **Navigate to the Project Directory**:  
+    Change to the cloned project directory:
+    ```bash
+    cd <project_directory>
+    ```
+
+3. **Clean Up (Optional)**:  
+    Remove unnecessary files for a clean setup:
+    ```bash
+    rm -rf .git build dist
+    ```
+
+4. **Update the Audio and Video Files**:  
+    Replace `focus_video.mp4` and `focus_audio.mp3` with your own motivational video and audio files. If you prefer, you can continue using the existing ones.
+
+5. **Install Dependencies**:  
     Install the required libraries:
     ```bash
     pip install opencv-python pygame screeninfo pyinstaller
     ```
 
-3. **Update Video/Audio Paths**:  
-    Change the paths in the script to point to your motivational video and audio files.
+6. **Update Video/Audio Paths in Script**:  
+    Open the `focus_video_script.py` file and update the paths to your video and audio files.
 
-4. **Convert Python to EXE**:  
-    Convert the script to an EXE with PyInstaller:
+7. **Convert Python to EXE**:  
+    Use PyInstaller to convert the Python script into an EXE:
     ```bash
     pyinstaller --onefile --windowed focus_video_script.py
     ```
 
-5. **Set Up Task Scheduler**:  
-    Create a Task Scheduler job to run an AHK script at login to unlock the system for the video to play.
+8. **Create Task Scheduler for Auto Unlock**:  
+    Create a Task Scheduler job to run an AutoHotKey (AHK) script at login to unlock your system for the video:
+    ```ahk
+    ; AHK Script Example for unlocking the workstation
+    SetTitleMatchMode, 2
+    Loop {
+         IfWinExist, Lock Screen
+         {
+              Send, {Enter}
+              break
+         }
+         Sleep, 1000  ; Wait before checking again
+    }
+    ```
 
-6. **Add EXE to Startup**:  
-    Add the EXE file to your Startup folder, or configure Task Scheduler to run it at login.
+9. **Add EXE to Startup**:  
+    Add the generated EXE to your Startup folder or configure Task Scheduler to run it at login:
+    ```bash
+    # Open Startup folder
+    shell:startup
+    ```
 
-7. **Enjoy Focused Productivity**:  
-    When you start your laptop, the motivational video will play automatically to help you stay focused. 🎯
-
+10. **Enjoy Focused Productivity**:  
+    When you start your laptop, the motivational video will automatically play, helping you stay focused and productive! 🎯
 ---
 
 ## 💡 Learnings & Challenges

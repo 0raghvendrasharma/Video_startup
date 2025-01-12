@@ -92,32 +92,3 @@ Loop {
 ## 💬 Final Thoughts
 
 This project is not only a personal solution but also a tool for anyone who struggles with distractions. It ensures a motivational start to the day, making you ready to focus and be productive! 🚀
-
----
-
-### Features Included:
-
-1. **Motivational Video**: Plays on startup.
-2. **Task Scheduler**: Automatically unlocks the workstation for video playback.
-3. **Conversion to EXE**: Using PyInstaller for easy deployment.
-4. **AutoHotkey Script**: Simulates unlocking the desktop.
-
-### Steps for Setup:
-
-- Clone the repo.
-- Install the necessary libraries and dependencies.
-- Update file paths for the video and audio.
-- Convert the Python script into an EXE with PyInstaller.
-- Add the EXE to startup via Task Scheduler.
-- Run the Task Scheduler for automatic workstation unlocking.
-
-### Tech Stack:
-
-- **Python**: Core language for the script.
-- **OpenCV**: For video playback.
-- **Pygame**: For audio management.
-- **PyInstaller**: For EXE conversion.
-- **Task Scheduler**: For automation.
-- **AutoHotkey**: For unlocking the workstation.
-
-Let me know if you need further tweaks! 😊

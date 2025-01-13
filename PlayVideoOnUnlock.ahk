@@ -1,4 +1,5 @@
-﻿#Persistent
+;This script is made for ahk script v1.1
+#Persistent
 #NoEnv
 SetTitleMatchMode, 2
 
